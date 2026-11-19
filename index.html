@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Wish Maker ❤️</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -81,7 +83,7 @@ input,textarea{
 }
 
 textarea{
-  min-height:110px;
+  min-height:130px;
   resize:none;
 }
 
@@ -105,6 +107,7 @@ textarea{
 .wishMessage{
   font-size:19px;
   line-height:1.6;
+  white-space:pre-wrap;
 }
 
 .cheesecake{
@@ -130,15 +133,35 @@ textarea{
   padding-bottom:15px;
 }
 
+.creator{
+  font-weight:bold;
+  letter-spacing:.5px;
+}
+
+.linkBox{
+  margin-top:20px;
+  padding:15px;
+  border-radius:15px;
+  background:rgba(0,0,0,.25);
+}
+
+.linkText{
+  width:100%;
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+.success{
+  color:#fff;
+  margin-bottom:12px;
+  font-weight:bold;
+}
+
 .back{
   background:rgba(255,255,255,.15);
   margin-top:15px;
 }
 
-.creator{
-  font-weight:bold;
-  letter-spacing:.5px;
-}
 </style>
 </head>
 
@@ -146,153 +169,208 @@ textarea{
 
 <div class="container">
 
-  <h1>✨ Wish Maker ✨</h1>
+<h1>✨ Wish Maker ✨</h1>
 
-  <p class="subtitle">
-    Kisi bhi special moment ke liye beautiful wish banao ❤️
-  </p>
-
-
-  <!-- HOME -->
-  <div id="home" class="card">
-
-    <h2>💌 Kya Wish Karna Hai?</h2>
-    <br>
-
-    <div class="grid">
-
-      <button onclick="selectWish('birthday')">
-        🎂 Birthday
-      </button>
-
-      <button onclick="selectWish('love')">
-        ❤️ Love Wish
-      </button>
-
-      <button onclick="selectWish('congrats')">
-        🎉 Congratulations
-      </button>
-
-      <button onclick="selectWish('goodluck')">
-        🌟 Good Luck
-      </button>
-
-      <button onclick="selectWish('morning')">
-        🌅 Good Morning
-      </button>
-
-      <button onclick="selectWish('night')">
-        🌙 Good Night
-      </button>
-
-      <button onclick="selectWish('sorry')">
-        🥺 Sorry
-      </button>
-
-      <button onclick="selectWish('anniversary')">
-        💖 Anniversary
-      </button>
-
-      <button onclick="selectWish('exam')">
-        📚 Best Wishes
-      </button>
-
-      <button onclick="selectWish('thanks')">
-        💐 Thank You
-      </button>
-
-      <button onclick="selectWish('getwell')">
-        🤗 Get Well Soon
-      </button>
-
-      <button onclick="selectWish('festival')">
-        🎊 Festival
-      </button>
-
-    </div>
-
-    <button onclick="selectWish('custom')" style="margin-top:15px;width:100%;">
-      ✨ Custom Wish
-    </button>
-
-  </div>
+<p class="subtitle">
+Kisi bhi special moment ke liye beautiful wish banao ❤️
+</p>
 
 
-  <!-- CREATE WISH -->
-  <div id="creator" class="card hidden">
+<!-- HOME -->
 
-    <h2 id="wishTitle">✨ Create Your Wish</h2>
+<div id="home" class="card">
 
-    <input
-      type="text"
-      id="name"
-      placeholder="Jiska naam hai ❤️"
-    >
+<h2>💌 Kya Wish Karna Hai?</h2>
 
-    <textarea
-      id="message"
-      placeholder="Apna special message likho..."
-    ></textarea>
+<br>
 
-    <input
-      type="file"
-      id="photoInput"
-      accept="image/*"
-      onchange="showPhoto(event)"
-    >
+<div class="grid">
 
-    <img id="previewPhoto" class="photo">
+<button onclick="selectWish('birthday')">
+🎂 Birthday
+</button>
 
-    <button onclick="generateWish()" style="width:100%;margin-top:10px;">
-      💖 Generate Wish
-    </button>
+<button onclick="selectWish('love')">
+❤️ Love Wish
+</button>
 
-    <button class="back" onclick="goHome()" style="width:100%;">
-      ⬅️ Back
-    </button>
+<button onclick="selectWish('congrats')">
+🎉 Congratulations
+</button>
 
-  </div>
+<button onclick="selectWish('goodluck')">
+🌟 Good Luck
+</button>
+
+<button onclick="selectWish('morning')">
+🌅 Good Morning
+</button>
+
+<button onclick="selectWish('night')">
+🌙 Good Night
+</button>
+
+<button onclick="selectWish('sorry')">
+🥺 Sorry
+</button>
+
+<button onclick="selectWish('anniversary')">
+💖 Anniversary
+</button>
+
+<button onclick="selectWish('exam')">
+📚 Best Wishes
+</button>
+
+<button onclick="selectWish('thanks')">
+💐 Thank You
+</button>
+
+<button onclick="selectWish('getwell')">
+🤗 Get Well Soon
+</button>
+
+<button onclick="selectWish('festival')">
+🎊 Festival
+</button>
+
+</div>
+
+<button
+onclick="selectWish('custom')"
+style="margin-top:15px;width:100%;">
+✨ Custom Wish
+</button>
+
+</div>
 
 
-  <!-- RESULT -->
-  <div id="result" class="hidden">
+<!-- CREATE -->
 
-    <div class="wishBox">
+<div id="creator" class="card hidden">
 
-      <img id="resultPhoto" class="photo">
+<h2 id="wishTitle">
+✨ Create Your Wish
+</h2>
 
-      <div id="cake" class="cheesecake">
-        🍰🍰🍰
-      </div>
+<input
+type="text"
+id="name"
+placeholder="Jiska naam hai ❤️"
+>
 
-      <h2 id="resultTitle"></h2>
+<textarea
+id="message"
+placeholder="Apna special message likho..."
+></textarea>
 
-      <p id="resultMessage" class="wishMessage"></p>
+<input
+type="file"
+id="photoInput"
+accept="image/*"
+onchange="showPhoto(event)"
+>
 
-      <br>
+<img
+id="previewPhoto"
+class="photo"
+>
 
-      <button onclick="shareWish()">
-        📤 Share Wish
-      </button>
+<button
+onclick="generateWish()"
+style="width:100%;margin-top:10px;">
+💖 Generate Wish
+</button>
 
-    </div>
+<button
+class="back"
+onclick="goHome()"
+style="width:100%;">
+⬅️ Back
+</button>
 
-    <button class="back" onclick="goHome()" style="width:100%;">
-      ✨ Create Another Wish
-    </button>
-
-  </div>
+</div>
 
 
-  <!-- CREATOR CREDIT -->
-  <p class="small creator">
-    Made by AyushYadavRS ❤️
-  </p>
+<!-- RESULT -->
+
+<div id="result" class="hidden">
+
+<div class="wishBox">
+
+<img
+id="resultPhoto"
+class="photo"
+>
+
+<div
+id="cake"
+class="cheesecake">
+🍰🍰🍰
+</div>
+
+<h2 id="resultTitle"></h2>
+
+<p
+id="resultMessage"
+class="wishMessage">
+</p>
+
+<br>
+
+<button onclick="generateLink()">
+🔗 Generate Link
+</button>
+
+<button
+onclick="shareWish()"
+style="margin-top:10px;">
+📤 Share
+</button>
+
+<div
+id="linkArea"
+class="linkBox hidden">
+
+<p class="success">
+✅ Tumhari Wish Link Ready Hai!
+</p>
+
+<input
+id="generatedLink"
+class="linkText"
+readonly
+>
+
+<button onclick="copyLink()">
+📋 Copy Link
+</button>
+
+</div>
+
+</div>
+
+<button
+class="back"
+onclick="goHome()"
+style="width:100%;">
+✨ Create Another Wish
+</button>
+
+</div>
+
+
+<!-- CREATOR -->
+
+<p class="small creator">
+Made by AyushYadavRS ❤️
+</p>
 
 </div>
 
 
 <script>
+
 
 let selectedWish = "custom";
 
@@ -367,174 +445,414 @@ default:"Wishing you lots of happiness, success and beautiful memories! ❤️�
 };
 
 
+
 function selectWish(type){
 
-  selectedWish = type;
+selectedWish = type;
 
-  document.getElementById("home")
-  .classList.add("hidden");
+document.getElementById("home")
+.classList.add("hidden");
 
-  document.getElementById("creator")
-  .classList.remove("hidden");
+document.getElementById("creator")
+.classList.remove("hidden");
 
-  document.getElementById("wishTitle")
-  .innerText = wishes[type].title;
+document.getElementById("result")
+.classList.add("hidden");
 
-  document.getElementById("message")
-  .value = wishes[type].default;
+document.getElementById("linkArea")
+.classList.add("hidden");
+
+document.getElementById("wishTitle")
+.innerText = wishes[type].title;
+
+document.getElementById("message")
+.value = wishes[type].default;
+
+document.getElementById("name")
+.value = "";
+
+document.getElementById("photoInput")
+.value = "";
+
+document.getElementById("previewPhoto")
+.style.display = "none";
 
 }
+
 
 
 function showPhoto(event){
 
-  const file = event.target.files[0];
+const file =
+event.target.files[0];
 
-  if(!file) return;
+if(!file) return;
 
-  const reader = new FileReader();
+const reader =
+new FileReader();
 
-  reader.onload = function(e){
+reader.onload = function(e){
 
-    const img =
-    document.getElementById("previewPhoto");
+const img =
+document.getElementById("previewPhoto");
 
-    img.src = e.target.result;
+img.src =
+e.target.result;
 
-    img.style.display = "block";
+img.style.display =
+"block";
 
-  };
+};
 
-  reader.readAsDataURL(file);
+reader.readAsDataURL(file);
 
 }
+
 
 
 function generateWish(){
 
-  const name =
-  document.getElementById("name")
-  .value.trim();
+const name =
+document.getElementById("name")
+.value.trim();
 
-  const message =
-  document.getElementById("message")
-  .value.trim();
+const message =
+document.getElementById("message")
+.value.trim();
 
-  if(name === ""){
+if(name === ""){
 
-    alert("Pehle naam likho ❤️");
+alert("Pehle naam likho ❤️");
 
-    return;
-  }
+return;
 
+}
 
-  document.getElementById("creator")
-  .classList.add("hidden");
+if(message === ""){
 
-  document.getElementById("result")
-  .classList.remove("hidden");
+alert("Pehle message likho ❤️");
 
-
-  document.getElementById("resultTitle")
-  .innerText =
-  wishes[selectedWish].title +
-  " ❤️ " + name;
-
-
-  document.getElementById("resultMessage")
-  .innerText = message;
-
-
-  const photo =
-  document.getElementById("previewPhoto");
-
-  const resultPhoto =
-  document.getElementById("resultPhoto");
-
-
-  if(photo.src){
-
-    resultPhoto.src = photo.src;
-
-    resultPhoto.style.display = "block";
-
-  }
-
-
-  if(selectedWish === "birthday"){
-
-    document.getElementById("cake")
-    .style.display = "block";
-
-  }else{
-
-    document.getElementById("cake")
-    .style.display = "none";
-
-  }
+return;
 
 }
 
 
-function goHome(){
+document.getElementById("creator")
+.classList.add("hidden");
 
-  document.getElementById("home")
-  .classList.remove("hidden");
+document.getElementById("result")
+.classList.remove("hidden");
 
-  document.getElementById("creator")
-  .classList.add("hidden");
 
-  document.getElementById("result")
-  .classList.add("hidden");
+document.getElementById("resultTitle")
+.innerText =
+wishes[selectedWish].title
++ " ❤️ "
++ name;
+
+
+document.getElementById("resultMessage")
+.innerText =
+message;
+
+
+const photo =
+document.getElementById("previewPhoto");
+
+const resultPhoto =
+document.getElementById("resultPhoto");
+
+
+if(photo.src){
+
+resultPhoto.src =
+photo.src;
+
+resultPhoto.style.display =
+"block";
+
+}else{
+
+resultPhoto.style.display =
+"none";
 
 }
+
+
+if(selectedWish === "birthday"){
+
+document.getElementById("cake")
+.style.display = "block";
+
+}else{
+
+document.getElementById("cake")
+.style.display = "none";
+
+}
+
+
+document.getElementById("linkArea")
+.classList.add("hidden");
+
+}
+
+
+
+function generateLink(){
+
+const name =
+document.getElementById("name")
+.value.trim();
+
+const message =
+document.getElementById("message")
+.value.trim();
+
+
+if(!name){
+
+alert("Naam missing hai ❤️");
+
+return;
+
+}
+
+
+/*
+Data ko URL ke andar save kar rahe hain.
+*/
+
+const data = {
+
+type:selectedWish,
+
+name:name,
+
+message:message
+
+};
+
+
+const encoded =
+btoa(
+encodeURIComponent(
+JSON.stringify(data)
+)
+);
+
+
+const link =
+window.location.origin +
+window.location.pathname +
+"?wish=" +
+encoded;
+
+
+document.getElementById("generatedLink")
+.value =
+link;
+
+
+document.getElementById("linkArea")
+.classList.remove("hidden");
+
+}
+
+
+
+function copyLink(){
+
+const input =
+document.getElementById("generatedLink");
+
+input.select();
+
+input.setSelectionRange(
+0,
+99999
+);
+
+navigator.clipboard
+.writeText(input.value)
+.then(()=>{
+
+alert("Link copy ho gayi ❤️");
+
+})
+.catch(()=>{
+
+document.execCommand("copy");
+
+alert("Link copy ho gayi ❤️");
+
+});
+
+}
+
 
 
 function shareWish(){
 
-  const name =
-  document.getElementById("name")
-  .value;
-
-  const title =
-  wishes[selectedWish].title;
-
-  const message =
-  document.getElementById("message")
-  .value;
+const link =
+document.getElementById("generatedLink")
+.value;
 
 
-  const text =
-  title +
-  "\n\nDear " +
-  name +
-  ", ❤️\n\n" +
-  message +
-  "\n\n✨ Made by AyushYadavRS";
+if(!link){
 
-
-  if(navigator.share){
-
-    navigator.share({
-
-      title:title,
-
-      text:text
-
-    });
-
-  }else{
-
-    navigator.clipboard
-    .writeText(text);
-
-    alert(
-      "Wish copy ho gayi ❤️ Ab WhatsApp/Gmail me paste kar do."
-    );
-
-  }
+generateLink();
 
 }
+
+
+setTimeout(()=>{
+
+const finalLink =
+document.getElementById("generatedLink")
+.value;
+
+
+if(navigator.share){
+
+navigator.share({
+
+title:"✨ Wish Maker",
+
+text:"Tumhare liye ek special wish ❤️",
+
+url:finalLink
+
+});
+
+}else{
+
+navigator.clipboard
+.writeText(finalLink);
+
+alert(
+"Wish link copy ho gayi ❤️ Ab WhatsApp me paste kar do."
+);
+
+}
+
+},200);
+
+}
+
+
+
+function loadWishFromLink(){
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const encoded =
+params.get("wish");
+
+if(!encoded) return;
+
+
+try{
+
+const data =
+JSON.parse(
+decodeURIComponent(
+atob(encoded)
+)
+);
+
+
+selectedWish =
+data.type || "custom";
+
+
+document.getElementById("home")
+.classList.add("hidden");
+
+document.getElementById("creator")
+.classList.add("hidden");
+
+document.getElementById("result")
+.classList.remove("hidden");
+
+
+const title =
+wishes[selectedWish]
+? wishes[selectedWish].title
+: "✨ Special Wish";
+
+
+document.getElementById("resultTitle")
+.innerText =
+title +
+" ❤️ " +
+(data.name || "");
+
+
+document.getElementById("resultMessage")
+.innerText =
+data.message || "";
+
+
+if(selectedWish === "birthday"){
+
+document.getElementById("cake")
+.style.display = "block";
+
+}else{
+
+document.getElementById("cake")
+.style.display = "none";
+
+}
+
+
+}catch(error){
+
+console.log(
+"Invalid wish link"
+);
+
+}
+
+}
+
+
+
+function goHome(){
+
+document.getElementById("home")
+.classList.remove("hidden");
+
+document.getElementById("creator")
+.classList.add("hidden");
+
+document.getElementById("result")
+.classList.add("hidden");
+
+document.getElementById("linkArea")
+.classList.add("hidden");
+
+
+/*
+URL se wish parameter hata do.
+*/
+
+history.replaceState(
+{},
+document.title,
+window.location.pathname
+);
+
+}
+
+
+
+loadWishFromLink();
+
 
 </script>
 
