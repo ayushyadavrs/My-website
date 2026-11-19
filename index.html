@@ -2,1376 +2,1609 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wish Maker ❤️</title>
 
 <style>
-
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,body{
+  min-height:100%;
 }
 
 body{
-font-family:Arial,sans-serif;
-min-height:100vh;
-background:
-radial-gradient(circle at top,#700080,#22002d 55%,#0d0013);
-color:white;
-text-align:center;
-overflow-x:hidden;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#fff;
+  background:#0b0615;
+  overflow-x:hidden;
 }
 
-.container{
-width:92%;
-max-width:650px;
-margin:auto;
-padding:25px 0 35px;
-}
-
-h1{
-font-size:42px;
-margin-bottom:8px;
-}
-
-.subtitle{
-color:#ffd8f7;
-margin-bottom:25px;
-}
-
-.card{
-background:rgba(255,255,255,.10);
-border:1px solid rgba(255,255,255,.20);
-backdrop-filter:blur(15px);
-border-radius:28px;
-padding:25px;
-margin:18px 0;
-box-shadow:0 15px 45px rgba(0,0,0,.35);
-}
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
+button,input,textarea{
+  font:inherit;
 }
 
 button{
-border:0;
-border-radius:18px;
-padding:16px 10px;
-font-size:16px;
-font-weight:bold;
-color:white;
-cursor:pointer;
-background:linear-gradient(135deg,#ff4fa3,#8145ff);
-box-shadow:0 6px 20px rgba(0,0,0,.25);
-transition:.2s;
-}
-
-button:active{
-transform:scale(.95);
-}
-
-input,textarea{
-width:100%;
-border:0;
-outline:0;
-border-radius:15px;
-padding:15px;
-margin:8px 0;
-font-size:16px;
-font-family:Arial;
-}
-
-textarea{
-min-height:130px;
-resize:none;
+  cursor:pointer;
 }
 
 .hidden{
-display:none!important;
+  display:none!important;
 }
+
+/* ================= CREATOR ================= */
 
 .creator{
-font-weight:bold;
-letter-spacing:.5px;
+  min-height:100vh;
+  padding:28px 15px 45px;
+  background:
+    radial-gradient(circle at 20% 0%,#5720a0 0%,transparent 35%),
+    radial-gradient(circle at 90% 20%,#b51f70 0%,transparent 30%),
+    linear-gradient(145deg,#10051f,#09030f);
 }
 
-.small{
-font-size:14px;
-color:#ffd8f7;
-margin-top:25px;
+.wrap{
+  width:min(900px,100%);
+  margin:auto;
 }
 
-
-/* =========================
-   CREATE PAGE
-========================= */
-
-.createTitle{
-margin-bottom:15px;
+.logo{
+  text-align:center;
+  font-size:34px;
+  font-weight:900;
+  margin-bottom:7px;
 }
 
-.preview{
-width:160px;
-height:160px;
-object-fit:cover;
-border-radius:50%;
-border:5px solid white;
-margin:15px auto;
-display:none;
+.tagline{
+  text-align:center;
+  color:#ddd;
+  opacity:.75;
+  margin-bottom:28px;
 }
 
+.panel{
+  padding:22px;
+  border-radius:28px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  backdrop-filter:blur(20px);
+  box-shadow:0 25px 80px rgba(0,0,0,.35);
+}
 
-/* =========================
-   LINK BOX
-========================= */
+.title{
+  font-size:21px;
+  font-weight:800;
+  margin-bottom:16px;
+}
+
+.wishes{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.wishChoice{
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+  color:white;
+  border-radius:18px;
+  padding:16px 10px;
+  transition:.2s;
+}
+
+.wishChoice:active{
+  transform:scale(.96);
+}
+
+.wishChoice.active{
+  background:linear-gradient(135deg,#ff3cac,#784bff);
+  border-color:transparent;
+  box-shadow:0 10px 30px rgba(164,60,255,.35);
+}
+
+.form{
+  display:none;
+  margin-top:24px;
+}
+
+label{
+  display:block;
+  margin:15px 0 7px;
+  font-weight:700;
+}
+
+input,textarea{
+  width:100%;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(0,0,0,.22);
+  color:white;
+  outline:none;
+  border-radius:15px;
+  padding:14px;
+}
+
+input::placeholder,
+textarea::placeholder{
+  color:#aaa;
+}
+
+textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
+.generate{
+  width:100%;
+  margin-top:20px;
+  padding:16px;
+  border:0;
+  border-radius:16px;
+  color:#fff;
+  font-weight:900;
+  background:linear-gradient(135deg,#ff3cac,#784bff);
+  box-shadow:0 10px 30px rgba(150,50,255,.35);
+}
+
+.credit{
+  text-align:center;
+  margin-top:22px;
+  color:#aaa;
+  font-size:13px;
+}
+
+/* ================= LINK BOX ================= */
 
 .linkBox{
-margin-top:18px;
-padding:15px;
-border-radius:18px;
-background:rgba(0,0,0,.25);
+  display:none;
+  margin-top:20px;
+  padding:18px;
+  border-radius:20px;
+  background:rgba(0,0,0,.25);
+  border:1px solid rgba(255,255,255,.12);
 }
 
 .linkInput{
-font-size:12px;
+  font-size:13px;
+  margin-top:10px;
 }
 
-
-/* =========================
-   RECEIVER SCREEN 1
-========================= */
-
-.receiveScreen{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
+.linkButtons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:12px;
 }
 
-.receiveCard{
-width:100%;
-max-width:500px;
-padding:35px 25px;
-border-radius:30px;
-background:rgba(255,255,255,.10);
-border:1px solid rgba(255,255,255,.2);
-backdrop-filter:blur(18px);
-box-shadow:0 20px 60px rgba(0,0,0,.4);
+.smallBtn{
+  border:0;
+  padding:13px;
+  border-radius:13px;
+  color:white;
+  font-weight:800;
+  background:rgba(255,255,255,.13);
 }
 
-.envelope{
-font-size:90px;
-animation:float 2s infinite ease-in-out;
+.whatsapp{
+  background:#20c063;
 }
 
-@keyframes float{
+/* ================= RECEIVER ================= */
 
-0%,100%{
-transform:translateY(0);
+.receiver{
+  display:none;
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
 }
 
-50%{
-transform:translateY(-12px);
+.screen{
+  min-height:100vh;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:25px 15px;
+  position:relative;
+  text-align:center;
 }
 
+.screen.active{
+  display:flex;
 }
 
-.receiveCard h2{
-font-size:30px;
-margin:15px 0;
+.glass{
+  width:min(560px,100%);
+  padding:35px 23px;
+  border-radius:32px;
+  background:rgba(255,255,255,.11);
+  border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(20px);
+  box-shadow:0 30px 100px rgba(0,0,0,.4);
 }
 
-.receiveCard p{
-color:#ffd8f7;
-font-size:17px;
-line-height:1.5;
+.bigEmoji{
+  font-size:82px;
+  animation:float 2.3s ease-in-out infinite;
+  margin-bottom:15px;
 }
 
+.screen h1{
+  font-size:clamp(31px,8vw,55px);
+  line-height:1.05;
+  margin-bottom:15px;
+}
 
-/* =========================
-   OPEN SCREEN
-========================= */
+.screen p{
+  line-height:1.6;
+  color:#eee;
+  opacity:.8;
+}
+
+.openBtn{
+  margin-top:25px;
+  padding:16px 30px;
+  border:0;
+  border-radius:999px;
+  color:white;
+  font-weight:900;
+  background:linear-gradient(135deg,#ff3cac,#784bff);
+  box-shadow:0 10px 35px rgba(180,50,255,.4);
+}
 
 .gift{
-font-size:105px;
-animation:
-float 2s infinite ease-in-out;
+  font-size:125px;
+  animation:gift 1.7s ease-in-out infinite;
+  margin-bottom:10px;
 }
 
-.tapText{
-font-size:18px;
-margin:15px 0 25px;
-color:#ffd8f7;
+.finalCard{
+  width:min(680px,100%);
+  padding:30px 20px;
+  border-radius:32px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(22px);
+  box-shadow:0 30px 100px rgba(0,0,0,.4);
+  position:relative;
+  overflow:hidden;
 }
 
-
-/* =========================
-   FINAL WISH
-========================= */
-
-.wishPage{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:25px 0;
+.finalCard:before{
+  content:"";
+  position:absolute;
+  width:250px;
+  height:250px;
+  background:rgba(255,255,255,.1);
+  border-radius:50%;
+  top:-130px;
+  right:-100px;
 }
 
-.wishCard{
-width:100%;
-max-width:600px;
-border-radius:32px;
-padding:30px 20px;
-background:
-linear-gradient(
-135deg,
-rgba(255,63,159,.95),
-rgba(128,55,255,.95)
-);
-box-shadow:0 20px 70px rgba(0,0,0,.45);
-animation:appear .8s ease;
+.typeEmoji{
+  font-size:70px;
+  animation:float 2s ease-in-out infinite;
 }
 
-@keyframes appear{
-
-from{
-opacity:0;
-transform:scale(.8) translateY(30px);
+.finalTitle{
+  position:relative;
+  font-size:clamp(29px,7vw,48px);
+  font-weight:900;
+  line-height:1.08;
+  margin-top:12px;
 }
 
-to{
-opacity:1;
-transform:scale(1) translateY(0);
-}
-
-}
-
-.wishEmoji{
-font-size:65px;
-margin-bottom:10px;
-}
-
-.wishName{
-font-size:38px;
-margin:10px 0 20px;
-}
-
-.wishMessage{
-font-size:19px;
-line-height:1.7;
-white-space:pre-wrap;
-}
-
-.cakes{
-font-size:55px;
-letter-spacing:7px;
-margin:20px 0;
+.finalMessage{
+  position:relative;
+  margin-top:18px;
+  font-size:18px;
+  line-height:1.75;
+  white-space:pre-wrap;
 }
 
 .from{
-margin-top:25px;
-font-size:14px;
-opacity:.9;
+  position:relative;
+  margin-top:23px;
+  font-size:18px;
+  font-weight:800;
 }
 
+.special{
+  position:relative;
+  margin-top:23px;
+  font-size:34px;
+  letter-spacing:7px;
+}
+
+.actionBtn{
+  margin-top:23px;
+  padding:14px 24px;
+  border:0;
+  border-radius:999px;
+  color:white;
+  background:linear-gradient(135deg,#00c6ff,#0072ff);
+  font-weight:900;
+}
+
+.restart{
+  margin-left:7px;
+  background:rgba(255,255,255,.13);
+}
+
+/* ================= BALLOONS ================= */
+
+#balloonLayer{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:50;
+}
+
+.balloon{
+  position:absolute;
+  bottom:-120px;
+  width:62px;
+  height:78px;
+  border-radius:50% 50% 47% 47%;
+  pointer-events:auto;
+  cursor:pointer;
+  box-shadow:
+    inset 8px 8px 15px rgba(255,255,255,.25),
+    inset -10px -12px 20px rgba(0,0,0,.16);
+  animation:rise linear forwards;
+}
+
+.balloon:before{
+  content:"";
+  position:absolute;
+  bottom:-7px;
+  left:50%;
+  transform:translateX(-50%);
+  border-left:6px solid transparent;
+  border-right:6px solid transparent;
+  border-top:10px solid currentColor;
+}
+
+.balloon:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:78px;
+  width:2px;
+  height:100px;
+  background:rgba(255,255,255,.4);
+}
+
+.balloon.pop{
+  animation:pop .25s forwards!important;
+}
+
+@keyframes rise{
+  to{
+    transform:translateY(-120vh) rotate(15deg);
+  }
+}
+
+@keyframes pop{
+  0%{transform:scale(1);opacity:1}
+  55%{transform:scale(1.35);opacity:.8}
+  100%{transform:scale(0);opacity:0}
+}
+
+/* ================= EFFECTS ================= */
+
 .confetti{
-position:fixed;
-top:-20px;
-font-size:25px;
-animation:fall 4s linear forwards;
-pointer-events:none;
+  position:fixed;
+  top:-20px;
+  width:8px;
+  height:14px;
+  z-index:100;
+  animation:fall 3s linear forwards;
 }
 
 @keyframes fall{
-
-to{
-transform:translateY(110vh) rotate(720deg);
-opacity:0;
+  to{
+    transform:translateY(110vh) rotate(720deg);
+    opacity:0;
+  }
 }
 
+.heart{
+  position:fixed;
+  bottom:-50px;
+  z-index:40;
+  font-size:25px;
+  pointer-events:none;
+  animation:heartRise 4s linear forwards;
 }
 
-
-/* =========================
-   THEMES
-========================= */
-
-.theme-birthday{
-background:
-radial-gradient(circle,#ff62a9,#5d005f 55%,#150018);
+@keyframes heartRise{
+  to{
+    transform:translateY(-115vh) rotate(30deg);
+    opacity:0;
+  }
 }
 
-.theme-love{
-background:
-radial-gradient(circle,#ff3f70,#480020 55%,#130008);
+.star{
+  position:fixed;
+  width:4px;
+  height:4px;
+  background:white;
+  border-radius:50%;
+  z-index:2;
+  animation:twinkle 1.5s infinite alternate;
 }
 
-.theme-congrats{
-background:
-radial-gradient(circle,#ffc400,#542000 55%,#120900);
+@keyframes twinkle{
+  from{opacity:.15;transform:scale(.6)}
+  to{opacity:1;transform:scale(1.5)}
 }
 
-.theme-goodluck{
-background:
-radial-gradient(circle,#00c6ff,#002a55 55%,#00101f);
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
 }
 
-.theme-morning{
-background:
-radial-gradient(circle,#ffbd59,#713900 55%,#190c00);
+@keyframes gift{
+  0%,100%{transform:translateY(0) rotate(-2deg)}
+  50%{transform:translateY(-16px) rotate(2deg)}
 }
 
-.theme-night{
-background:
-radial-gradient(circle,#5146ff,#110044 55%,#050014);
+/* ================= TOAST ================= */
+
+.toast{
+  position:fixed;
+  z-index:500;
+  left:50%;
+  bottom:22px;
+  transform:translate(-50%,100px);
+  background:#17121e;
+  border:1px solid rgba(255,255,255,.15);
+  padding:13px 20px;
+  border-radius:999px;
+  transition:.3s;
 }
 
-.theme-sorry{
-background:
-radial-gradient(circle,#8d8dff,#29295d 55%,#08081b);
+.toast.show{
+  transform:translate(-50%,0);
 }
 
-.theme-anniversary{
-background:
-radial-gradient(circle,#ff72bd,#550047 55%,#160012);
+@media(max-width:550px){
+  .wishes{
+    grid-template-columns:1fr;
+  }
+
+  .linkButtons{
+    grid-template-columns:1fr;
+  }
+
+  .restart{
+    margin-left:0;
+    margin-top:8px;
+  }
 }
-
-.theme-exam{
-background:
-radial-gradient(circle,#00d4aa,#003f40 55%,#001817);
-}
-
-.theme-thanks{
-background:
-radial-gradient(circle,#ff9f68,#653000 55%,#180900);
-}
-
-.theme-getwell{
-background:
-radial-gradient(circle,#72e6ff,#004a5b 55%,#00151b);
-}
-
-.theme-festival{
-background:
-radial-gradient(circle,#ff5c5c,#620000 55%,#170000);
-}
-
-.theme-custom{
-background:
-radial-gradient(circle,#b14cff,#45006c 55%,#100018);
-}
-
-
-/* MOBILE */
-
-@media(max-width:500px){
-
-h1{
-font-size:34px;
-}
-
-.grid{
-gap:10px;
-}
-
-button{
-font-size:14px;
-}
-
-.wishName{
-font-size:32px;
-}
-
-.wishMessage{
-font-size:17px;
-}
-
-}
-
 </style>
 </head>
 
-
 <body>
 
+<!-- ================= CREATOR ================= -->
 
-<!-- =========================
-     CREATE WEBSITE
-========================= -->
+<div id="creator" class="creator">
 
-<div id="mainWebsite">
+  <div class="wrap">
 
-<div class="container">
+    <div class="logo">✨ Wish Maker</div>
 
-<h1>✨ Wish Maker ✨</h1>
+    <div class="tagline">
+      Create a special wish and share the surprise.
+    </div>
 
-<p class="subtitle">
-Kisi bhi special moment ke liye beautiful wish banao ❤️
-</p>
+    <div class="panel">
 
+      <div class="title">Choose Your Wish</div>
 
-<!-- HOME -->
+      <div class="wishes">
 
-<div id="home" class="card">
+        <button class="wishChoice" data-type="Birthday">
+          🎂 Birthday
+        </button>
 
-<h2>💌 Kya Wish Karna Hai?</h2>
+        <button class="wishChoice" data-type="Love Wish">
+          ❤️ Love Wish
+        </button>
 
-<br>
+        <button class="wishChoice" data-type="Congratulations">
+          🏆 Congratulations
+        </button>
 
-<div class="grid">
+        <button class="wishChoice" data-type="Good Luck">
+          🍀 Good Luck
+        </button>
 
-<button onclick="selectWish('birthday')">
-🎂 Birthday
-</button>
+        <button class="wishChoice" data-type="Good Morning">
+          ☀️ Good Morning
+        </button>
 
-<button onclick="selectWish('love')">
-❤️ Love Wish
-</button>
+        <button class="wishChoice" data-type="Good Night">
+          🌙 Good Night
+        </button>
 
-<button onclick="selectWish('congrats')">
-🎉 Congratulations
-</button>
+        <button class="wishChoice" data-type="Sorry">
+          🥺 Sorry
+        </button>
 
-<button onclick="selectWish('goodluck')">
-🌟 Good Luck
-</button>
+        <button class="wishChoice" data-type="Anniversary">
+          💍 Anniversary
+        </button>
 
-<button onclick="selectWish('morning')">
-🌅 Good Morning
-</button>
+        <button class="wishChoice" data-type="Best Wishes">
+          ✨ Best Wishes
+        </button>
 
-<button onclick="selectWish('night')">
-🌙 Good Night
-</button>
+        <button class="wishChoice" data-type="Thank You">
+          🙏 Thank You
+        </button>
 
-<button onclick="selectWish('sorry')">
-🥺 Sorry
-</button>
+        <button class="wishChoice" data-type="Get Well Soon">
+          🌷 Get Well Soon
+        </button>
 
-<button onclick="selectWish('anniversary')">
-💖 Anniversary
-</button>
+        <button class="wishChoice" data-type="Festival">
+          🎊 Festival
+        </button>
 
-<button onclick="selectWish('exam')">
-📚 Best Wishes
-</button>
+        <button class="wishChoice" data-type="Custom Wish">
+          💫 Custom Wish
+        </button>
 
-<button onclick="selectWish('thanks')">
-💐 Thank You
-</button>
+      </div>
 
-<button onclick="selectWish('getwell')">
-🤗 Get Well Soon
-</button>
+      <div id="form" class="form">
 
-<button onclick="selectWish('festival')">
-🎊 Festival
-</button>
+        <label>Your Name</label>
 
-</div>
+        <input
+          id="sender"
+          type="text"
+          maxlength="60"
+          placeholder="Enter your name"
+        >
 
-<button
-onclick="selectWish('custom')"
-style="width:100%;margin-top:14px;">
-✨ Custom Wish
-</button>
+        <label>Recipient Name</label>
 
-</div>
+        <input
+          id="recipient"
+          type="text"
+          maxlength="60"
+          placeholder="Enter recipient's name"
+        >
 
+        <label>Your Message</label>
 
-<!-- CREATE -->
+        <textarea
+          id="message"
+          maxlength="1200"
+          placeholder="Write your special message..."
+        ></textarea>
 
-<div id="creator" class="card hidden">
+        <button class="generate" onclick="generateWishLink()">
+          🔗 Generate Wish Link
+        </button>
 
-<h2
-id="wishTitle"
-class="createTitle">
-✨ Create Your Wish
-</h2>
+      </div>
 
-<input
-id="name"
-type="text"
-placeholder="Jiska naam hai ❤️"
->
+      <div id="linkBox" class="linkBox">
 
-<textarea
-id="message"
-placeholder="Apna special message likho..."
-></textarea>
+        <b>✨ Your Wish Link Is Ready!</b>
 
-<input
-id="photoInput"
-type="file"
-accept="image/*"
-onchange="showPhoto(event)"
->
+        <input
+          id="generatedLink"
+          class="linkInput"
+          readonly
+        >
 
-<img
-id="previewPhoto"
-class="preview"
->
+        <div class="linkButtons">
 
-<button
-onclick="generateWish()"
-style="width:100%;">
-💖 Create Wish
-</button>
+          <button class="smallBtn" onclick="copyLink()">
+            📋 Copy Link
+          </button>
 
-<button
-onclick="goHome()"
-class="back"
-style="width:100%;margin-top:10px;">
-⬅️ Back
-</button>
+          <button class="smallBtn whatsapp" onclick="shareWhatsApp()">
+            💬 Send on WhatsApp
+          </button>
 
-</div>
+        </div>
 
+      </div>
 
-<!-- RESULT -->
+    </div>
 
-<div
-id="result"
-class="card hidden">
+    <div class="credit">
+      Made by AyushYadavRS ❤️
+    </div>
 
-<h2>🎉 Your Wish Is Ready!</h2>
-
-<p style="margin-top:10px;color:#ffd8f7;">
-Ab iska shareable link banao 👇
-</p>
-
-<button
-onclick="generateLink()"
-style="width:100%;margin-top:20px;">
-🔗 Generate Share Link
-</button>
-
-<div
-id="linkArea"
-class="linkBox hidden">
-
-<p style="margin-bottom:10px;">
-✅ Link Ready!
-</p>
-
-<input
-id="generatedLink"
-class="linkInput"
-readonly
->
-
-<button
-onclick="copyLink()"
-style="width:100%;margin-top:5px;">
-📋 Copy Link
-</button>
-
-<button
-onclick="shareLink()"
-style="width:100%;margin-top:10px;">
-📤 WhatsApp / Share
-</button>
-
-</div>
-
-<button
-onclick="goHome()"
-class="back"
-style="width:100%;margin-top:15px;">
-✨ Create Another
-</button>
+  </div>
 
 </div>
 
 
-<p class="small creator">
-Made by AyushYadavRS ❤️
-</p>
+<!-- ================= RECEIVER ================= -->
+
+<div id="receiver" class="receiver">
+
+  <!-- SCREEN 1 -->
+
+  <section id="screen1" class="screen active">
+
+    <div class="glass">
+
+      <div class="bigEmoji">💌</div>
+
+      <h1>Someone Sent You<br>A Special Wish</h1>
+
+      <p>
+        A little surprise has been prepared just for you.
+      </p>
+
+      <button class="openBtn" onclick="goScreen2()">
+        Continue ✨
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- SCREEN 2 -->
+
+  <section id="screen2" class="screen">
+
+    <div class="glass">
+
+      <div class="gift">🎁</div>
+
+      <h1>You Have a Wish!</h1>
+
+      <p>
+        Something special is waiting inside.
+      </p>
+
+      <button class="openBtn" onclick="goFinal()">
+        🎁 Tap to Open
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- SCREEN 3 -->
+
+  <section id="screen3" class="screen">
+
+    <div class="finalCard">
+
+      <div id="typeEmoji" class="typeEmoji">✨</div>
+
+      <div id="cakes" class="special"></div>
+
+      <div id="finalTitle" class="finalTitle"></div>
+
+      <div id="finalMessage" class="finalMessage"></div>
+
+      <div id="finalFrom" class="from"></div>
+
+      <div id="special" class="special"></div>
+
+      <button class="actionBtn" onclick="shareCurrentWish()">
+        🔗 Share Wish
+      </button>
+
+      <button class="actionBtn restart" onclick="location.href=baseURL()">
+        ✨ Create Your Own
+      </button>
+
+    </div>
+
+  </section>
 
 </div>
 
-</div>
 
+<div id="balloonLayer"></div>
 
-<!-- =========================
-     RECEIVER EXPERIENCE
-========================= -->
-
-<div
-id="receiver"
-class="hidden">
-
-
-<!-- SCREEN 1 -->
-
-<div
-id="receive1"
-class="receiveScreen">
-
-<div class="receiveCard">
-
-<div class="envelope">
-💌
-</div>
-
-<h2>
-Someone Sent You A Wish
-</h2>
-
-<p>
-Kisi ne tumhare liye ek special message bheja hai ❤️
-</p>
-
-<button
-onclick="openGift()"
-style="width:100%;margin-top:25px;">
-✨ Open Wish
-</button>
-
-</div>
-
-</div>
-
-
-<!-- SCREEN 2 -->
-
-<div
-id="receive2"
-class="receiveScreen hidden">
-
-<div class="receiveCard">
-
-<div class="gift">
-🎁
-</div>
-
-<h2>
-A Special Surprise For You
-</h2>
-
-<p class="tapText">
-Gift ke andar tumhare liye kuch special hai ❤️
-</p>
-
-<button
-onclick="revealWish()"
-style="width:100%;">
-💖 Reveal My Wish
-</button>
-
-</div>
-
-</div>
-
-
-<!-- SCREEN 3 -->
-
-<div
-id="receive3"
-class="wishPage hidden">
-
-<div
-id="wishCard"
-class="wishCard">
-
-<div
-id="wishEmoji"
-class="wishEmoji">
-❤️
-</div>
-
-<div
-id="wishCakes"
-class="cakes hidden">
-🍰🍰🍰
-</div>
-
-<h1
-id="receiverTitle">
-</h1>
-
-<div
-id="receiverName"
-class="wishName">
-</div>
-
-<p
-id="receiverMessage"
-class="wishMessage">
-</p>
-
-<p class="from">
-Made by AyushYadavRS ❤️
-</p>
-
-<button
-onclick="createOwnWish()"
-style="margin-top:25px;">
-✨ Create Your Own Wish
-</button>
-
-</div>
-
-</div>
-
-</div>
+<div id="toast" class="toast"></div>
 
 
 <script>
 
+/* =====================================================
+   WISH CONFIG
+===================================================== */
 
-/* =========================
-   WISH DATA
-========================= */
+const themes = {
 
-const wishes = {
+  "Birthday":{
+    emoji:"🎂",
+    special:"🎈 🎉 🍰 🎉 🎈",
+    background:"radial-gradient(circle at top,#ff4f91,#7627c9 55%,#100317)",
+    title:"Happy Birthday, NAME! 🎂"
+  },
 
-birthday:{
-title:"Happy Birthday",
-emoji:"🎂",
-theme:"theme-birthday",
-default:"Happy Birthday! 🎉 May your life always be filled with happiness, love and beautiful memories. ❤️"
-},
+  "Love Wish":{
+    emoji:"❤️",
+    special:"❤️ 💕 💖 💕 ❤️",
+    background:"radial-gradient(circle at top,#ff416c,#8e1748 55%,#18030e)",
+    title:"A Special Wish for NAME ❤️"
+  },
 
-love:{
-title:"Special Love Wish",
-emoji:"❤️",
-theme:"theme-love",
-default:"You are a very special person in my life. May your bond always stay beautiful and full of happiness. ❤️✨"
-},
+  "Congratulations":{
+    emoji:"🏆",
+    special:"🎉 🏆 🥳 🎉 🏆",
+    background:"radial-gradient(circle at top,#ffb300,#d84315 55%,#180600)",
+    title:"Congratulations, NAME! 🎉"
+  },
 
-congrats:{
-title:"Congratulations",
-emoji:"🎉",
-theme:"theme-congrats",
-default:"Congratulations! 🎉 You worked hard for this moment. Keep shining and achieving bigger things! 🌟"
-},
+  "Good Luck":{
+    emoji:"🍀",
+    special:"🍀 ✨ 🍀 ✨ 🍀",
+    background:"radial-gradient(circle at top,#00a884,#176b38 55%,#03140b)",
+    title:"Good Luck, NAME! 🍀"
+  },
 
-goodluck:{
-title:"Good Luck",
-emoji:"🌟",
-theme:"theme-goodluck",
-default:"All the very best! 🌟 Believe in yourself and give your best. You can do it! ❤️"
-},
+  "Good Morning":{
+    emoji:"☀️",
+    special:"☀️ 🌤️ ☀️ 🌤️ ☀️",
+    background:"radial-gradient(circle at top,#ffb347,#ff7043 55%,#300d00)",
+    title:"Good Morning, NAME! ☀️"
+  },
 
-morning:{
-title:"Good Morning",
-emoji:"🌅",
-theme:"theme-morning",
-default:"Good Morning! ☀️ May your day be peaceful, happy and full of beautiful moments. ❤️"
-},
+  "Good Night":{
+    emoji:"🌙",
+    special:"🌙 ⭐ ✨ ⭐ 🌙",
+    background:"radial-gradient(circle at top,#403078,#182848 55%,#030611)",
+    title:"Good Night, NAME! 🌙"
+  },
 
-night:{
-title:"Good Night",
-emoji:"🌙",
-theme:"theme-night",
-default:"Good Night! 🌙 Sleep peacefully and wake up with a beautiful smile. Sweet dreams! ❤️"
-},
+  "Sorry":{
+    emoji:"🥺",
+    special:"💙 🥺 💙",
+    background:"radial-gradient(circle at top,#667eea,#4055a5 55%,#080b25)",
+    title:"I'm Sorry, NAME 💙"
+  },
 
-sorry:{
-title:"I'm Sorry",
-emoji:"🥺",
-theme:"theme-sorry",
-default:"I'm really sorry. ❤️ I hope you can forgive me and we can make things beautiful again."
-},
+  "Anniversary":{
+    emoji:"💍",
+    special:"💍 ❤️ 💍 ❤️ 💍",
+    background:"radial-gradient(circle at top,#d4145a,#702080 55%,#180016)",
+    title:"Happy Anniversary, NAME! 💍"
+  },
 
-anniversary:{
-title:"Happy Anniversary",
-emoji:"💖",
-theme:"theme-anniversary",
-default:"Happy Anniversary! 💖 May your beautiful bond become stronger and happier with every passing day. ✨"
-},
+  "Best Wishes":{
+    emoji:"✨",
+    special:"✨ ⭐ 💫 ⭐ ✨",
+    background:"radial-gradient(circle at top,#7f00ff,#4a148c 55%,#100020)",
+    title:"Best Wishes, NAME! ✨"
+  },
 
-exam:{
-title:"Best Wishes",
-emoji:"📚",
-theme:"theme-exam",
-default:"All the very best! 📚 Stay confident, work hard and give your best. You can do it! 🌟"
-},
+  "Thank You":{
+    emoji:"🙏",
+    special:"💖 🙏 💖 🙏 💖",
+    background:"radial-gradient(circle at top,#00b09b,#096b65 55%,#021b1a)",
+    title:"Thank You, NAME! 🙏"
+  },
 
-thanks:{
-title:"Thank You",
-emoji:"💐",
-theme:"theme-thanks",
-default:"Thank you for always being there. 💐 Your kindness and support mean a lot. ❤️"
-},
+  "Get Well Soon":{
+    emoji:"🌷",
+    special:"🌷 🌸 🌷 🌸 🌷",
+    background:"radial-gradient(circle at top,#56ab2f,#23751c 55%,#041205)",
+    title:"Get Well Soon, NAME! 🌷"
+  },
 
-getwell:{
-title:"Get Well Soon",
-emoji:"🤗",
-theme:"theme-getwell",
-default:"Get well soon! 🤗 Take care of yourself and come back with your beautiful smile soon. ❤️"
-},
+  "Festival":{
+    emoji:"🎊",
+    special:"🎊 🪔 🎉 🪔 🎊",
+    background:"radial-gradient(circle at top,#ff8008,#c62828 55%,#1b0600)",
+    title:"Happy Festival, NAME! 🎊"
+  },
 
-festival:{
-title:"Happy Festival",
-emoji:"🎊",
-theme:"theme-festival",
-default:"Wishing you and your family lots of happiness, peace and beautiful moments. 🎊❤️"
-},
-
-custom:{
-title:"Special Wish",
-emoji:"✨",
-theme:"theme-custom",
-default:"Wishing you lots of happiness, success and beautiful memories! ❤️✨"
-}
+  "Custom Wish":{
+    emoji:"💫",
+    special:"✨ 💫 ⭐ 💫 ✨",
+    background:"radial-gradient(circle at top,#4776e6,#7b1fa2 55%,#0d061b)",
+    title:"A Special Wish for NAME 💫"
+  }
 
 };
 
 
-let selectedWish="custom";
-
-let currentWishData=null;
-
-
-/* =========================
+/* =====================================================
    SELECT WISH
-========================= */
+===================================================== */
 
-function selectWish(type){
+let selectedType = "";
 
-selectedWish=type;
+document.querySelectorAll(".wishChoice").forEach(button=>{
 
-document.getElementById("home")
-.classList.add("hidden");
+  button.addEventListener("click",()=>{
 
-document.getElementById("creator")
-.classList.remove("hidden");
+    document
+      .querySelectorAll(".wishChoice")
+      .forEach(item=>item.classList.remove("active"));
 
-document.getElementById("result")
-.classList.add("hidden");
+    button.classList.add("active");
 
-document.getElementById("wishTitle")
-.innerText=wishes[type].title;
+    selectedType = button.dataset.type;
 
-document.getElementById("message")
-.value=wishes[type].default;
+    document.getElementById("form").style.display="block";
 
-document.getElementById("name")
-.value="";
+    document.getElementById("form")
+      .scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
 
-document.getElementById("photoInput")
-.value="";
-
-document.getElementById("previewPhoto")
-.style.display="none";
-
-}
-
-
-/* =========================
-   PHOTO PREVIEW
-========================= */
-
-function showPhoto(event){
-
-const file=event.target.files[0];
-
-if(!file)return;
-
-const reader=new FileReader();
-
-reader.onload=function(e){
-
-const img=
-document.getElementById("previewPhoto");
-
-img.src=e.target.result;
-
-img.style.display="block";
-
-};
-
-reader.readAsDataURL(file);
-
-}
-
-
-/* =========================
-   CREATE WISH
-========================= */
-
-function generateWish(){
-
-const name=
-document.getElementById("name")
-.value.trim();
-
-const message=
-document.getElementById("message")
-.value.trim();
-
-if(!name){
-
-alert("Pehle naam likho ❤️");
-
-return;
-
-}
-
-if(!message){
-
-alert("Message likho ❤️");
-
-return;
-
-}
-
-
-currentWishData={
-type:selectedWish,
-name:name,
-message:message
-};
-
-
-document.getElementById("creator")
-.classList.add("hidden");
-
-document.getElementById("result")
-.classList.remove("hidden");
-
-document.getElementById("linkArea")
-.classList.add("hidden");
-
-}
-
-
-/* =========================
-   REAL SHAREABLE LINK
-========================= */
-
-function generateLink(){
-
-if(!currentWishData){
-
-alert("Pehle Wish Create karo ❤️");
-
-return;
-
-}
-
-
-/*
-JSON → URL encoded string
-
-Hash (#) use kar rahe hain.
-Isse GitHub Pages ko kisi
-extra page ki zarurat nahi.
-*/
-
-const json=
-JSON.stringify(currentWishData);
-
-const encoded=
-encodeURIComponent(json);
-
-
-/*
-Current published website ka
-exact address automatically milega.
-*/
-
-const base=
-window.location.origin+
-window.location.pathname;
-
-const link=
-base+
-"#wish="+
-encoded;
-
-
-document.getElementById("generatedLink")
-.value=link;
-
-document.getElementById("linkArea")
-.classList.remove("hidden");
-
-}
-
-
-/* =========================
-   COPY
-========================= */
-
-function copyLink(){
-
-const input=
-document.getElementById("generatedLink");
-
-input.select();
-
-input.setSelectionRange(0,99999);
-
-navigator.clipboard
-.writeText(input.value)
-.then(()=>{
-
-alert("✅ Link copy ho gayi ❤️");
-
-})
-.catch(()=>{
-
-document.execCommand("copy");
-
-alert("✅ Link copy ho gayi ❤️");
+  });
 
 });
 
+
+/* =====================================================
+   UTF-8 SAFE ENCODE
+===================================================== */
+
+function encodeWish(data){
+
+  const json = JSON.stringify(data);
+
+  const bytes = new TextEncoder().encode(json);
+
+  let binary = "";
+
+  bytes.forEach(byte=>{
+    binary += String.fromCharCode(byte);
+  });
+
+  return btoa(binary)
+    .replace(/\+/g,"-")
+    .replace(/\//g,"_")
+    .replace(/=/g,"");
 }
 
 
-/* =========================
-   SHARE
-========================= */
+/* =====================================================
+   UTF-8 SAFE DECODE
+===================================================== */
 
-function shareLink(){
+function decodeWish(encoded){
 
-let link=
-document.getElementById("generatedLink")
-.value;
+  encoded = encoded
+    .replace(/-/g,"+")
+    .replace(/_/g,"/");
 
+  while(encoded.length % 4){
+    encoded += "=";
+  }
 
-/*
-Agar link generate nahi hua,
-pehle automatically generate karo.
-*/
+  const binary = atob(encoded);
 
-if(!link){
+  const bytes = Uint8Array.from(
+    binary,
+    char=>char.charCodeAt(0)
+  );
 
-generateLink();
-
-link=
-document.getElementById("generatedLink")
-.value;
-
-}
-
-
-if(navigator.share){
-
-navigator.share({
-
-title:"✨ A Special Wish For You",
-
-text:"Tumhare liye ek special wish hai ❤️",
-
-url:link
-
-}).catch(()=>{});
-
-}else{
-
-navigator.clipboard
-.writeText(link);
-
-alert(
-"Link copy ho gayi ❤️ WhatsApp kholo aur paste kar do."
-);
-
-}
+  return JSON.parse(
+    new TextDecoder().decode(bytes)
+  );
 
 }
 
 
-/* =========================
-   CHECK SHARED LINK
-========================= */
+/* =====================================================
+   BASE WEBSITE URL
+===================================================== */
 
-function checkSharedLink(){
+function baseURL(){
 
-const hash=
-window.location.hash;
-
-if(!hash.startsWith("#wish=")){
-
-return;
+  return window.location.origin +
+         window.location.pathname;
 
 }
 
 
-try{
+/* =====================================================
+   GENERATE REAL SHAREABLE LINK
+===================================================== */
 
-const encoded=
-hash.substring(6);
+function generateWishLink(){
 
-const json=
-decodeURIComponent(encoded);
+  const sender =
+    document.getElementById("sender")
+      .value.trim();
 
-const data=
-JSON.parse(json);
+  const recipient =
+    document.getElementById("recipient")
+      .value.trim();
 
-if(!data.name || !data.message){
+  const message =
+    document.getElementById("message")
+      .value.trim();
 
-return;
+  if(!selectedType){
 
-}
+    showToast("Please choose a wish type.");
 
-currentWishData=data;
+    return;
+  }
 
-showReceiver();
+  if(!sender){
 
-}catch(error){
+    showToast("Please enter your name.");
 
-console.log("Invalid wish link",error);
+    return;
+  }
 
-}
+  if(!recipient){
 
-}
+    showToast("Please enter the recipient name.");
 
+    return;
+  }
 
-/* =========================
-   RECEIVER
-========================= */
+  if(!message){
 
-function showReceiver(){
+    showToast("Please write your message.");
 
-document.getElementById("mainWebsite")
-.classList.add("hidden");
-
-document.getElementById("receiver")
-.classList.remove("hidden");
-
-document.getElementById("receive1")
-.classList.remove("hidden");
-
-document.getElementById("receive2")
-.classList.add("hidden");
-
-document.getElementById("receive3")
-.classList.add("hidden");
-
-}
+    return;
+  }
 
 
-/* =========================
-   SCREEN 1 → SCREEN 2
-========================= */
+  const data = {
 
-function openGift(){
+    type:selectedType,
 
-document.getElementById("receive1")
-.classList.add("hidden");
+    sender:sender,
 
-document.getElementById("receive2")
-.classList.remove("hidden");
+    recipient:recipient,
 
-}
+    message:message
+
+  };
 
 
-/* =========================
-   SCREEN 2 → SCREEN 3
-========================= */
-
-function revealWish(){
-
-const data=currentWishData;
-
-const info=
-wishes[data.type] || wishes.custom;
+  const encoded = encodeWish(data);
 
 
-/*
-Theme
-*/
+  /*
+     The complete wish is stored inside
+     the URL itself.
 
-document.body.className="";
+     Example:
 
-document.body.classList.add(info.theme);
+     yoursite.com/?wish=xxxxx
+  */
 
-
-/*
-Emoji
-*/
-
-document.getElementById("wishEmoji")
-.innerText=info.emoji;
+  const link =
+    baseURL() +
+    "?wish=" +
+    encodeURIComponent(encoded);
 
 
-/*
-Title
-*/
+  document.getElementById("generatedLink")
+    .value = link;
 
-document.getElementById("receiverTitle")
-.innerText=info.title;
-
-
-/*
-Name
-*/
-
-document.getElementById("receiverName")
-.innerText=
-"❤️ "+data.name+" ❤️";
+  document.getElementById("linkBox")
+    .style.display = "block";
 
 
-/*
-Message
-*/
-
-document.getElementById("receiverMessage")
-.innerText=
-data.message;
-
-
-/*
-Birthday cake
-*/
-
-if(data.type==="birthday"){
-
-document.getElementById("wishCakes")
-.classList.remove("hidden");
-
-}else{
-
-document.getElementById("wishCakes")
-.classList.add("hidden");
+  document.getElementById("linkBox")
+    .scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
 
 }
 
 
-/*
-Screen change
-*/
+/* =====================================================
+   COPY LINK
+===================================================== */
 
-document.getElementById("receive2")
-.classList.add("hidden");
+async function copyLink(){
 
-document.getElementById("receive3")
-.classList.remove("hidden");
+  const link =
+    document.getElementById("generatedLink")
+      .value;
 
+  try{
 
-/*
-Confetti
-*/
+    await navigator.clipboard.writeText(link);
 
-startConfetti();
+    showToast("Wish link copied! ❤️");
+
+  }catch(error){
+
+    const input =
+      document.getElementById("generatedLink");
+
+    input.select();
+
+    document.execCommand("copy");
+
+    showToast("Wish link copied! ❤️");
+
+  }
 
 }
 
 
-/* =========================
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+function shareWhatsApp(){
+
+  const link =
+    document.getElementById("generatedLink")
+      .value;
+
+  const text =
+    "💌 I made a special wish for you!\n\n" +
+    "Tap this link to open it ✨\n\n" +
+    link;
+
+  const whatsappURL =
+    "https://wa.me/?text=" +
+    encodeURIComponent(text);
+
+  window.open(
+    whatsappURL,
+    "_blank"
+  );
+
+}
+
+
+/* =====================================================
+   READ LINK ON PAGE LOAD
+===================================================== */
+
+function checkSharedWish(){
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  const encoded =
+    params.get("wish");
+
+  if(!encoded){
+
+    return;
+
+  }
+
+
+  try{
+
+    const data =
+      decodeWish(
+        decodeURIComponent(encoded)
+      );
+
+    if(
+      !data.type ||
+      !data.sender ||
+      !data.recipient ||
+      !data.message
+    ){
+
+      throw new Error("Invalid wish");
+
+    }
+
+    openReceiver(data);
+
+  }catch(error){
+
+    console.log(error);
+
+    showToast(
+      "This wish link is invalid or damaged."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   OPEN RECEIVER MODE
+===================================================== */
+
+function openReceiver(data){
+
+  window.wishData = data;
+
+  document.getElementById("creator")
+    .style.display = "none";
+
+  document.getElementById("receiver")
+    .style.display = "block";
+
+
+  const theme =
+    themes[data.type] ||
+    themes["Custom Wish"];
+
+
+  document.getElementById("receiver")
+    .style.background =
+      theme.background;
+
+
+  createBalloons();
+
+}
+
+
+/* =====================================================
+   SCREEN 2
+===================================================== */
+
+function goScreen2(){
+
+  document.getElementById("screen1")
+    .classList.remove("active");
+
+  document.getElementById("screen2")
+    .classList.add("active");
+
+  createConfetti();
+
+}
+
+
+/* =====================================================
+   FINAL SCREEN
+===================================================== */
+
+function goFinal(){
+
+  const data = window.wishData;
+
+  const theme =
+    themes[data.type] ||
+    themes["Custom Wish"];
+
+
+  document.getElementById("screen2")
+    .classList.remove("active");
+
+  document.getElementById("screen3")
+    .classList.add("active");
+
+
+  document.getElementById("typeEmoji")
+    .textContent =
+      theme.emoji;
+
+
+  document.getElementById("finalTitle")
+    .textContent =
+      theme.title.replace(
+        "NAME",
+        data.recipient
+      );
+
+
+  document.getElementById("finalMessage")
+    .textContent =
+      data.message;
+
+
+  document.getElementById("finalFrom")
+    .textContent =
+      "With best wishes from " +
+      data.sender +
+      " ❤️";
+
+
+  document.getElementById("special")
+    .textContent =
+      theme.special;
+
+
+  if(data.type === "Birthday"){
+
+    document.getElementById("cakes")
+      .textContent =
+        "🍰 🍰 🍰";
+
+  }else{
+
+    document.getElementById("cakes")
+      .textContent = "";
+
+  }
+
+
+  createConfetti();
+
+
+  if(
+    data.type === "Love Wish" ||
+    data.type === "Anniversary"
+  ){
+
+    createHearts();
+
+  }
+
+
+  if(data.type === "Good Night"){
+
+    createStars();
+
+  }
+
+}
+
+
+/* =====================================================
+   BALLOONS
+===================================================== */
+
+function createBalloons(){
+
+  const layer =
+    document.getElementById("balloonLayer");
+
+  layer.innerHTML = "";
+
+
+  const colors = [
+
+    "#ff477e",
+    "#8e44ff",
+    "#00bfff",
+    "#ffb300",
+    "#00d084",
+    "#ff7043"
+
+  ];
+
+
+  for(let i=0;i<14;i++){
+
+    const balloon =
+      document.createElement("div");
+
+
+    balloon.className = "balloon";
+
+
+    const color =
+      colors[
+        Math.floor(
+          Math.random()*colors.length
+        )
+      ];
+
+
+    balloon.style.background = color;
+
+    balloon.style.color = color;
+
+
+    balloon.style.left =
+      Math.random()*96 + "%";
+
+
+    balloon.style.animationDuration =
+      (5 + Math.random()*6) + "s";
+
+
+    balloon.style.animationDelay =
+      Math.random()*3 + "s";
+
+
+    balloon.addEventListener("click",()=>{
+
+      balloon.classList.add("pop");
+
+
+      createMiniConfetti(
+        balloon.getBoundingClientRect().left,
+        balloon.getBoundingClientRect().top
+      );
+
+
+      setTimeout(()=>{
+        balloon.remove();
+      },250);
+
+    });
+
+
+    layer.appendChild(balloon);
+
+  }
+
+}
+
+
+/* =====================================================
+   MINI CONFETTI
+===================================================== */
+
+function createMiniConfetti(x,y){
+
+  for(let i=0;i<14;i++){
+
+    const piece =
+      document.createElement("div");
+
+
+    piece.className = "confetti";
+
+
+    piece.style.left =
+      x + "px";
+
+
+    piece.style.top =
+      y + "px";
+
+
+    piece.style.animationDuration =
+      (.7 + Math.random()*1.3) + "s";
+
+
+    piece.style.transform =
+      "rotate(" +
+      Math.random()*360 +
+      "deg)";
+
+
+    document.body.appendChild(piece);
+
+
+    setTimeout(()=>{
+      piece.remove();
+    },2200);
+
+  }
+
+}
+
+
+/* =====================================================
    CONFETTI
-========================= */
+===================================================== */
 
-function startConfetti(){
+function createConfetti(){
 
-const symbols=[
-"❤️",
-"✨",
-"🎉",
-"💖",
-"🌟",
-"🎊",
-"💕"
-];
+  for(let i=0;i<90;i++){
 
-for(let i=0;i<35;i++){
+    const piece =
+      document.createElement("div");
 
-const item=
-document.createElement("div");
 
-item.className="confetti";
+    piece.className = "confetti";
 
-item.innerText=
-symbols[
-Math.floor(
-Math.random()*symbols.length
-)
-];
 
-item.style.left=
-Math.random()*100+"vw";
+    piece.style.left =
+      Math.random()*100 + "vw";
 
-item.style.animationDuration=
-(2+Math.random()*3)+"s";
 
-item.style.animationDelay=
-(Math.random()*1)+"s";
+    piece.style.animationDelay =
+      Math.random()*1.5 + "s";
 
-document.body.appendChild(item);
 
-setTimeout(()=>{
+    piece.style.animationDuration =
+      (2 + Math.random()*2) + "s";
 
-item.remove();
 
-},5000);
+    document.body.appendChild(piece);
 
-}
+
+    setTimeout(()=>{
+      piece.remove();
+    },4500);
+
+  }
 
 }
 
 
-/* =========================
-   HOME
-========================= */
+/* =====================================================
+   HEARTS
+===================================================== */
 
-function goHome(){
+function createHearts(){
 
-window.location.hash="";
-
-document.body.className="";
-
-document.getElementById("receiver")
-.classList.add("hidden");
-
-document.getElementById("mainWebsite")
-.classList.remove("hidden");
-
-document.getElementById("home")
-.classList.remove("hidden");
-
-document.getElementById("creator")
-.classList.add("hidden");
-
-document.getElementById("result")
-.classList.add("hidden");
-
-}
+  const hearts = [
+    "❤️",
+    "💕",
+    "💖",
+    "💗",
+    "💓"
+  ];
 
 
-/* =========================
-   CREATE YOUR OWN
-========================= */
+  for(let i=0;i<28;i++){
 
-function createOwnWish(){
+    const heart =
+      document.createElement("div");
 
-window.location.hash="";
 
-document.body.className="";
+    heart.className = "heart";
 
-document.getElementById("receiver")
-.classList.add("hidden");
 
-document.getElementById("mainWebsite")
-.classList.remove("hidden");
+    heart.textContent =
+      hearts[
+        Math.floor(
+          Math.random()*hearts.length
+        )
+      ];
 
-document.getElementById("home")
-.classList.remove("hidden");
 
-document.getElementById("creator")
-.classList.add("hidden");
+    heart.style.left =
+      Math.random()*100 + "vw";
 
-document.getElementById("result")
-.classList.add("hidden");
+
+    heart.style.animationDelay =
+      Math.random()*3 + "s";
+
+
+    document.body.appendChild(heart);
+
+
+    setTimeout(()=>{
+      heart.remove();
+    },5500);
+
+  }
 
 }
 
 
-/* =========================
+/* =====================================================
+   STARS
+===================================================== */
+
+function createStars(){
+
+  for(let i=0;i<55;i++){
+
+    const star =
+      document.createElement("div");
+
+
+    star.className = "star";
+
+
+    star.style.left =
+      Math.random()*100 + "vw";
+
+
+    star.style.top =
+      Math.random()*100 + "vh";
+
+
+    star.style.animationDelay =
+      Math.random()*2 + "s";
+
+
+    document.body.appendChild(star);
+
+
+    setTimeout(()=>{
+      star.remove();
+    },9000);
+
+  }
+
+}
+
+
+/* =====================================================
+   SHARE CURRENT WISH
+===================================================== */
+
+async function shareCurrentWish(){
+
+  const data =
+    window.wishData;
+
+
+  const link =
+    baseURL() +
+    "?wish=" +
+    encodeURIComponent(
+      encodeWish(data)
+    );
+
+
+  const text =
+    "💌 A special wish for " +
+    data.recipient +
+    "!\n\n" +
+    link;
+
+
+  if(navigator.share){
+
+    try{
+
+      await navigator.share({
+
+        title:"A Special Wish ❤️",
+
+        text:text,
+
+        url:link
+
+      });
+
+      return;
+
+    }catch(error){}
+
+  }
+
+
+  try{
+
+    await navigator.clipboard.writeText(link);
+
+    showToast("Wish link copied! ❤️");
+
+  }catch(error){
+
+    showToast("Unable to copy the link.");
+
+  }
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+
+  toast.textContent =
+    message;
+
+
+  toast.classList.add("show");
+
+
+  setTimeout(()=>{
+
+    toast.classList.remove("show");
+
+  },2300);
+
+}
+
+
+/* =====================================================
    START
-========================= */
+===================================================== */
 
-checkSharedLink();
-
+checkSharedWish();
 
 </script>
 
