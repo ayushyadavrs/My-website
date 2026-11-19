@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Magic 🎂</title>
+<title>Wish Maker ❤️</title>
 
 <style>
 *{
@@ -13,698 +13,504 @@
 }
 
 body{
-  font-family:Arial, sans-serif;
+  font-family:Arial,sans-serif;
   min-height:100vh;
+  background:linear-gradient(135deg,#16001f,#45004f,#16001f);
   color:white;
-  background:
-    radial-gradient(circle at 20% 20%,#8b2cff55,transparent 35%),
-    radial-gradient(circle at 80% 30%,#ff3d8155,transparent 35%),
-    linear-gradient(135deg,#08001a,#16002d,#05000d);
+  text-align:center;
   overflow-x:hidden;
 }
 
 .container{
   width:92%;
-  max-width:850px;
+  max-width:650px;
   margin:auto;
+  padding:35px 0;
 }
 
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:22px 0;
+h1{
+  font-size:42px;
+  margin-bottom:10px;
 }
 
-.logo{
-  font-size:21px;
-  font-weight:bold;
-}
-
-.logo span{
-  color:#ff79b0;
-}
-
-.badge{
-  padding:8px 13px;
-  border:1px solid #ffffff30;
-  border-radius:30px;
-  font-size:11px;
-  color:#ddd;
-}
-
-.hero{
-  text-align:center;
-  padding:45px 0 30px;
-}
-
-.tag{
-  display:inline-block;
-  background:#ffffff12;
-  border:1px solid #ffffff20;
-  padding:9px 15px;
-  border-radius:30px;
-  color:#ffc2d9;
-  font-size:12px;
-  margin-bottom:20px;
-}
-
-.hero h1{
-  font-size:clamp(45px,12vw,82px);
-  line-height:.95;
-  letter-spacing:-4px;
-}
-
-.gradient{
-  background:linear-gradient(90deg,#ffd36e,#ff65a7,#b98cff);
-  -webkit-background-clip:text;
-  color:transparent;
-}
-
-.hero p{
-  max-width:600px;
-  margin:22px auto;
-  color:#c9c3d6;
-  line-height:1.6;
+.subtitle{
+  color:#ffd8f7;
+  margin-bottom:30px;
 }
 
 .card{
-  background:#ffffff0d;
-  border:1px solid #ffffff1c;
-  border-radius:28px;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(12px);
+  border-radius:25px;
   padding:25px;
-  backdrop-filter:blur(18px);
-  box-shadow:0 25px 80px #0008;
+  margin:18px 0;
+  box-shadow:0 10px 35px rgba(0,0,0,.3);
 }
 
-label{
-  display:block;
-  font-size:12px;
-  color:#aaa3b9;
-  margin:0 0 8px 3px;
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+button{
+  border:none;
+  border-radius:18px;
+  padding:17px 10px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  color:white;
+  background:linear-gradient(135deg,#ff4fa3,#8d45ff);
+  box-shadow:0 5px 15px rgba(0,0,0,.25);
+}
+
+button:active{
+  transform:scale(.96);
 }
 
 input,textarea{
   width:100%;
   padding:15px;
-  border-radius:15px;
-  border:1px solid #ffffff18;
-  background:#05050eaa;
-  color:white;
+  margin:9px 0;
+  border:none;
+  border-radius:14px;
   outline:none;
-  margin-bottom:16px;
+  font-size:16px;
 }
 
 textarea{
-  min-height:120px;
-  resize:vertical;
+  min-height:110px;
+  resize:none;
 }
 
-input:focus,textarea:focus{
-  border-color:#ff77aa;
-}
-
-button{
-  cursor:pointer;
-  border:none;
-  border-radius:15px;
-  padding:14px 20px;
-  font-weight:bold;
-}
-
-.mainBtn{
-  width:100%;
-  background:linear-gradient(90deg,#ffc85f,#ff639f);
-  color:#170713;
-  font-size:15px;
-}
-
-.preview{
-  text-align:center;
-  margin-top:20px;
-  padding:30px 20px;
-}
-
-.preview .cake{
-  font-size:80px;
-  animation:float 2s infinite ease-in-out;
-}
-
-.preview h2{
-  margin:12px 0 8px;
-}
-
-.preview p{
-  color:#aaa5b7;
-  font-size:13px;
-  line-height:1.5;
-}
-
-footer{
-  text-align:center;
-  color:#777080;
-  font-size:12px;
-  padding:30px 0;
-}
-
-
-/* BIRTHDAY SCREEN */
-
-#wish{
+.hidden{
   display:none;
-  min-height:100vh;
-  text-align:center;
-  padding:30px 15px 60px;
 }
 
 .wishBox{
-  width:min(760px,95%);
-  margin:auto;
+  padding:30px 18px;
+  border-radius:25px;
+  background:linear-gradient(135deg,#ff3f9f,#ff8ac7);
+  margin-top:20px;
+  box-shadow:0 10px 35px rgba(0,0,0,.35);
+}
+
+.wishBox h2{
+  font-size:32px;
+  margin-bottom:15px;
+}
+
+.wishMessage{
+  font-size:19px;
+  line-height:1.6;
+}
+
+.cheesecake{
+  font-size:55px;
+  margin:20px 0;
+  letter-spacing:8px;
+}
+
+.photo{
+  width:170px;
+  height:170px;
+  object-fit:cover;
+  border-radius:50%;
+  border:5px solid white;
+  margin:15px auto;
+  display:none;
 }
 
 .small{
-  color:#ffd06e;
-  letter-spacing:3px;
-  font-size:11px;
-  text-transform:uppercase;
+  font-size:13px;
+  color:#ffd8f7;
+  margin-top:25px;
 }
 
-#wish h1{
-  font-size:clamp(48px,12vw,90px);
-  line-height:.9;
-  margin:18px 0;
-  letter-spacing:-4px;
+.back{
+  background:rgba(255,255,255,.15);
+  margin-top:15px;
 }
 
-.from{
-  color:#c8c2d4;
-}
-
-.scene{
-  position:relative;
-  height:300px;
-  margin-top:30px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-.bigCake{
-  font-size:145px;
-  animation:float 2.5s infinite ease-in-out;
-  filter:drop-shadow(0 20px 20px #0009);
-}
-
-.balloon{
-  position:absolute;
-  width:45px;
-  height:58px;
-  border-radius:50%;
-  cursor:pointer;
-  animation:bob 2.5s infinite ease-in-out;
-}
-
-.balloon:after{
-  content:"";
-  position:absolute;
-  width:1px;
-  height:70px;
-  background:#ffffff55;
-  left:50%;
-  top:55px;
-}
-
-.b1{left:5%;top:35px;background:#ff568d}
-.b2{right:5%;top:50px;background:#55bfff}
-.b3{left:17%;bottom:25px;background:#ffd25a}
-.b4{right:17%;bottom:15px;background:#a979ff}
-
-.message{
-  background:#ffffff0d;
-  border:1px solid #ffffff1c;
-  border-radius:25px;
-  padding:28px;
-  font-size:18px;
-  line-height:1.7;
-  color:#eee;
-  backdrop-filter:blur(15px);
-}
-
-.buttons{
-  margin-top:22px;
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.gift{
-  background:linear-gradient(90deg,#ffd064,#ff639f);
-  color:#180813;
-}
-
-.magic{
-  background:#ffffff12;
-  border:1px solid #ffffff20;
-  color:white;
-}
-
-.credit{
-  margin-top:30px;
-  color:#777080;
-  font-size:12px;
-}
-
-
-/* MODAL */
-
-#modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#000b;
-  z-index:20;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.modalBox{
-  width:min(500px,100%);
-  background:#171226;
-  border:1px solid #ffffff20;
-  border-radius:28px;
-  padding:30px;
-  text-align:center;
-}
-
-.modalBox .emoji{
-  font-size:75px;
-}
-
-.modalBox h2{
-  font-size:30px;
-  margin:10px;
-}
-
-.modalBox p{
-  color:#c5bfd1;
-  line-height:1.6;
-  margin:15px 0 20px;
-}
-
-.close{
-  background:white;
-  color:#111;
-}
-
-
-/* CONFETTI */
-
-#confetti{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:50;
-  overflow:hidden;
-}
-
-.conf{
-  position:absolute;
-  width:8px;
-  height:14px;
-  animation:fall 2s linear forwards;
-}
-
-
-/* ANIMATIONS */
-
-@keyframes float{
-  50%{
-    transform:translateY(-15px) rotate(2deg);
-  }
-}
-
-@keyframes bob{
-  50%{
-    transform:translateY(-15px) rotate(5deg);
-  }
-}
-
-@keyframes fall{
-  to{
-    transform:translateY(110vh) rotate(720deg);
-    opacity:0;
-  }
-}
-
-@media(max-width:600px){
-  .hero{
-    padding-top:30px;
-  }
-
-  .card{
-    padding:20px;
-  }
-
-  .scene{
-    height:270px;
-  }
-
-  .bigCake{
-    font-size:120px;
-  }
+#customArea{
+  margin-top:15px;
 }
 </style>
 </head>
 
-
 <body>
-
-<!-- GENERATOR -->
-
-<div id="generator">
 
 <div class="container">
 
-<header>
-  <div class="logo">Birthday<span>Magic</span> ✨</div>
-  <div class="badge">FREE • NO LOGIN</div>
-</header>
+  <h1>✨ Wish Maker ✨</h1>
+  <p class="subtitle">
+    Kisi bhi special moment ke liye beautiful wish banao ❤️
+  </p>
+
+  <!-- HOME -->
+  <div id="home" class="card">
+
+    <h2>💌 Kya Wish Karna Hai?</h2>
+    <br>
+
+    <div class="grid">
+
+      <button onclick="selectWish('birthday')">
+        🎂 Birthday
+      </button>
+
+      <button onclick="selectWish('love')">
+        ❤️ Love Wish
+      </button>
+
+      <button onclick="selectWish('congrats')">
+        🎉 Congratulations
+      </button>
+
+      <button onclick="selectWish('goodluck')">
+        🌟 Good Luck
+      </button>
+
+      <button onclick="selectWish('morning')">
+        🌅 Good Morning
+      </button>
+
+      <button onclick="selectWish('night')">
+        🌙 Good Night
+      </button>
+
+      <button onclick="selectWish('sorry')">
+        🥺 Sorry
+      </button>
+
+      <button onclick="selectWish('anniversary')">
+        💖 Anniversary
+      </button>
+
+      <button onclick="selectWish('exam')">
+        📚 Best Wishes
+      </button>
+
+      <button onclick="selectWish('thanks')">
+        💐 Thank You
+      </button>
+
+      <button onclick="selectWish('getwell')">
+        🤗 Get Well Soon
+      </button>
+
+      <button onclick="selectWish('festival')">
+        🎊 Festival
+      </button>
+
+    </div>
+
+    <button onclick="selectWish('custom')" style="margin-top:15px;width:100%;">
+      ✨ Custom Wish
+    </button>
+
+  </div>
 
 
-<section class="hero">
+  <!-- CREATOR -->
+  <div id="creator" class="card hidden">
 
-<div class="tag">🎉 CREATE A SPECIAL BIRTHDAY</div>
+    <h2 id="wishTitle">✨ Create Your Wish</h2>
 
-<h1>
-Your wish.<br>
-<span class="gradient">Their moment.</span>
-</h1>
+    <input
+      type="text"
+      id="name"
+      placeholder="Jiska naam hai ❤️"
+    >
 
-<p>
-Naam aur message enter karo aur ek personalized birthday surprise link banao.
-Link share karo aur saamne wale ko ek beautiful birthday experience milega.
-</p>
+    <textarea
+      id="message"
+      placeholder="Apna special message likho..."
+    ></textarea>
 
-</section>
+    <input
+      type="file"
+      id="photoInput"
+      accept="image/*"
+      onchange="showPhoto(event)"
+    >
 
+    <img id="previewPhoto" class="photo">
 
-<div class="card">
+    <button onclick="generateWish()" style="width:100%;margin-top:10px;">
+      💖 Generate Wish
+    </button>
 
-<label>🎂 BIRTHDAY PERSON</label>
-<input id="person" placeholder="Birthday person ka naam">
+    <button class="back" onclick="goHome()" style="width:100%;">
+      ⬅️ Back
+    </button>
 
-
-<label>💌 YOUR NAME</label>
-<input id="sender" placeholder="Tumhara naam">
-
-
-<label>✍️ BIRTHDAY MESSAGE</label>
-<textarea id="message">Wishing you the happiest birthday! 🎂✨ May your day be full of happiness, smiles and beautiful memories.</textarea>
-
-
-<button class="mainBtn" onclick="createBirthday()">
-✨ CREATE MY BIRTHDAY LINK
-</button>
-
-</div>
+  </div>
 
 
-<div class="card preview">
+  <!-- RESULT -->
+  <div id="result" class="hidden">
 
-<div class="cake">🎂</div>
+    <div class="wishBox">
 
-<h2>A little magic awaits...</h2>
+      <img id="resultPhoto" class="photo">
 
-<p>
-Animated balloons, birthday cake, surprise gift,
-confetti and your personal message.
-</p>
+      <div id="cake" class="cheesecake">
+        🍰🍰🍰
+      </div>
 
-</div>
+      <h2 id="resultTitle"></h2>
 
+      <p id="resultMessage" class="wishMessage"></p>
 
-<footer>
-Created by AyushYadavRS
-</footer>
+      <br>
 
-</div>
-</div>
+      <button onclick="shareWish()">
+        📤 Share Wish
+      </button>
 
+    </div>
 
+    <button class="back" onclick="goHome()" style="width:100%;">
+      ✨ Create Another Wish
+    </button>
 
-<!-- BIRTHDAY PAGE -->
-
-<div id="wish">
-
-<div class="wishBox">
-
-<div class="small">
-A special message for you
-</div>
-
-<h1>
-Happy Birthday,<br>
-<span class="gradient" id="personName">You</span>! 🎉
-</h1>
-
-<div class="from">
-A little surprise from <b id="senderName">Someone</b>
-</div>
+  </div>
 
 
-<div class="scene">
-
-<div class="balloon b1" onclick="pop(this)"></div>
-<div class="balloon b2" onclick="pop(this)"></div>
-<div class="balloon b3" onclick="pop(this)"></div>
-<div class="balloon b4" onclick="pop(this)"></div>
-
-<div class="bigCake">
-🎂
-</div>
-
-</div>
-
-
-<div class="message" id="birthdayMessage">
-Happy Birthday! 🎂✨
-</div>
-
-
-<div class="buttons">
-
-<button class="gift" onclick="openGift()">
-🎁 OPEN YOUR SURPRISE
-</button>
-
-<button class="magic" onclick="confetti(100)">
-✨ MORE MAGIC
-</button>
-
-</div>
-
-
-<div class="credit">
-Made with ❤️ · Created by AyushYadavRS
-</div>
-
-</div>
-</div>
-
-
-
-<!-- SURPRISE -->
-
-<div id="modal">
-
-<div class="modalBox">
-
-<div class="emoji">🎁</div>
-
-<h2>One More Wish! ✨</h2>
-
-<p>
-May this new year of your life bring you lots of happiness,
-success, beautiful memories and countless reasons to smile. 🎉
-</p>
-
-<button class="close" onclick="closeGift()">
-Continue Celebration 🎉
-</button>
+  <p class="small">
+    Made with ❤️ for special people
+  </p>
 
 </div>
-
-</div>
-
-
-<div id="confetti"></div>
 
 
 <script>
 
-function createBirthday(){
+let selectedWish = "custom";
 
-let person=document.getElementById("person").value.trim();
+const wishes = {
 
-let sender=document.getElementById("sender").value.trim();
+birthday:{
+title:"🎂 Birthday Wish",
+default:"Happy Birthday! 🎉 May your life always be filled with happiness, love and beautiful memories. ❤️"
+},
 
-let message=document.getElementById("message").value.trim();
+love:{
+title:"❤️ Special Love Wish",
+default:"You are a very special person in my life. May our bond always stay beautiful and full of happiness. ❤️✨"
+},
+
+congrats:{
+title:"🎉 Congratulations",
+default:"Congratulations! 🎉 You worked hard for this moment. Keep shining and achieving bigger things! 🌟"
+},
+
+goodluck:{
+title:"🌟 Good Luck",
+default:"All the very best! 🌟 Believe in yourself and give your best. You can do it! ❤️"
+},
+
+morning:{
+title:"🌅 Good Morning",
+default:"Good Morning! ☀️ May your day be peaceful, happy and full of beautiful moments. ❤️"
+},
+
+night:{
+title:"🌙 Good Night",
+default:"Good Night! 🌙 Sleep peacefully and wake up with a beautiful smile. Sweet dreams! ❤️"
+},
+
+sorry:{
+title:"🥺 Sorry",
+default:"I'm really sorry. ❤️ I hope you can forgive me and we can make things beautiful again."
+},
+
+anniversary:{
+title:"💖 Happy Anniversary",
+default:"Happy Anniversary! 💖 May your beautiful bond become stronger and happier with every passing day. ✨"
+},
+
+exam:{
+title:"📚 Best Wishes",
+default:"All the very best! 📚 Stay confident, work hard and give your best. You can do it! 🌟"
+},
+
+thanks:{
+title:"💐 Thank You",
+default:"Thank you for always being there. 💐 Your kindness and support mean a lot. ❤️"
+},
+
+getwell:{
+title:"🤗 Get Well Soon",
+default:"Get well soon! 🤗 Take care of yourself and come back with your beautiful smile soon. ❤️"
+},
+
+festival:{
+title:"🎊 Happy Festival",
+default:"Wishing you and your family lots of happiness, peace and beautiful moments. 🎊❤️"
+},
+
+custom:{
+title:"✨ Special Wish",
+default:"Wishing you lots of happiness, success and beautiful memories! ❤️✨"
+}
+
+};
 
 
-if(person===""){
-alert("Birthday person ka naam likho 🙂");
+function selectWish(type){
+
+selectedWish = type;
+
+document.getElementById("home").classList.add("hidden");
+
+document.getElementById("creator").classList.remove("hidden");
+
+document.getElementById("wishTitle").innerText =
+wishes[type].title;
+
+document.getElementById("message").value =
+wishes[type].default;
+
+}
+
+
+function showPhoto(event){
+
+const file = event.target.files[0];
+
+if(!file) return;
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+const img =
+document.getElementById("previewPhoto");
+
+img.src = e.target.result;
+
+img.style.display = "block";
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+
+function generateWish(){
+
+const name =
+document.getElementById("name").value.trim();
+
+const message =
+document.getElementById("message").value.trim();
+
+if(name === ""){
+
+alert("Pehle naam likho ❤️");
+
 return;
-}
-
-
-if(sender===""){
-sender="Someone special";
-}
-
-
-if(message===""){
-message="Happy Birthday! 🎂✨";
-}
-
-
-let url=
-window.location.href.split("?")[0]
-+"?name="
-+encodeURIComponent(person)
-+"&from="
-+encodeURIComponent(sender)
-+"&msg="
-+encodeURIComponent(message);
-
-
-try{
-navigator.clipboard.writeText(url);
-}catch(e){}
-
-
-window.location.href=url;
 
 }
 
+document.getElementById("creator")
+.classList.add("hidden");
+
+document.getElementById("result")
+.classList.remove("hidden");
+
+document.getElementById("resultTitle").innerText =
+wishes[selectedWish].title +
+" ❤️ " + name;
+
+document.getElementById("resultMessage").innerText =
+message;
 
 
-function showBirthday(person,sender,message){
+const photo =
+document.getElementById("previewPhoto");
 
-document.getElementById("generator").style.display="none";
+const resultPhoto =
+document.getElementById("resultPhoto");
 
-document.getElementById("wish").style.display="block";
+if(photo.src){
 
-document.getElementById("personName").textContent=person;
+resultPhoto.src = photo.src;
 
-document.getElementById("senderName").textContent=sender;
-
-document.getElementById("birthdayMessage").textContent=message;
-
-setTimeout(function(){
-confetti(70);
-},400);
+resultPhoto.style.display = "block";
 
 }
 
+if(selectedWish === "birthday"){
 
+document.getElementById("cake")
+.style.display = "block";
 
-function loadBirthday(){
+}else{
 
-let params=new URLSearchParams(window.location.search);
-
-let person=params.get("name");
-
-if(person){
-
-let sender=params.get("from") || "Someone special";
-
-let message=params.get("msg") || "Happy Birthday! 🎂✨";
-
-showBirthday(person,sender,message);
+document.getElementById("cake")
+.style.display = "none";
 
 }
 
 }
 
 
+function goHome(){
 
-function pop(balloon){
+document.getElementById("home")
+.classList.remove("hidden");
 
-balloon.style.display="none";
+document.getElementById("creator")
+.classList.add("hidden");
 
-confetti(25);
-
-}
-
-
-
-function openGift(){
-
-document.getElementById("modal").style.display="flex";
-
-confetti(100);
+document.getElementById("result")
+.classList.add("hidden");
 
 }
 
 
+function shareWish(){
 
-function closeGift(){
+const name =
+document.getElementById("name").value;
 
-document.getElementById("modal").style.display="none";
+const title =
+wishes[selectedWish].title;
 
-}
+const message =
+document.getElementById("message").value;
 
+const text =
+title + "\n\n" +
+"Dear " + name + ", ❤️\n\n" +
+message +
+"\n\n✨ Made with Wish Maker";
 
+if(navigator.share){
 
-function confetti(amount){
+navigator.share({
 
-let box=document.getElementById("confetti");
+title:title,
 
-let colors=[
-"#ffcf63",
-"#ff70a7",
-"#6cc9ff",
-"#a984ff",
-"#ffffff"
-];
+text:text
 
+});
 
-for(let i=0;i<amount;i++){
+}else{
 
-let piece=document.createElement("div");
+navigator.clipboard.writeText(text);
 
-piece.className="conf";
-
-piece.style.left=Math.random()*100+"vw";
-
-piece.style.top="-20px";
-
-piece.style.background=
-colors[Math.floor(Math.random()*colors.length)];
-
-piece.style.animationDelay=
-Math.random()*0.7+"s";
-
-piece.style.transform=
-"rotate("+Math.random()*360+"deg)";
-
-box.appendChild(piece);
-
-
-setTimeout(function(){
-
-piece.remove();
-
-},2500);
+alert("Wish copy ho gayi ❤️ Ab WhatsApp/Gmail me paste kar do.");
 
 }
 
 }
-
-
-loadBirthday();
 
 </script>
 
